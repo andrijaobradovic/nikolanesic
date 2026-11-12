@@ -75,6 +75,7 @@
   --chart-5: oklch(0.476 0.114 61.907);
   --radius: 0.625rem;
   --button-secondary-fill: oklch(0.3 0.08 238);
+  --header-height: 4.25rem;
   --sidebar: oklch(0.986 0.002 67.8);
   --sidebar-foreground: oklch(0.147 0.004 49.3);
   --sidebar-primary: oklch(0.546 0.245 262.881);
@@ -130,4 +131,122 @@
   html {
     @apply font-sans;
   }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+  font-size: clamp(1.35rem, 7.15cqi, 2.65rem);
+  line-height: 1.12;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: clamp(1.7rem, 7.6cqi, 1.9rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-title {
+    font-size: clamp(1.875rem, 7.95cqi, 2.15rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.375rem;
+  }
+}
+
+.hero-rise-delay {
+  animation-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
+
+.loan-range {
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 1.125rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.loan-range:focus {
+  outline: none;
+}
+
+.loan-range:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.loan-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--primary) 0%,
+    var(--primary) var(--range-percent),
+    var(--border) var(--range-percent),
+    var(--border) 100%
+  );
+}
+
+.loan-range::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -7px;
+  height: 18px;
+  width: 18px;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: var(--button-secondary-fill);
+  box-shadow: 0 0 0 1px oklch(0.3 0.08 238 / 0.2);
+}
+
+.loan-range::-moz-range-track {
+  height: 4px;
+  border: none;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.loan-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.loan-range::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: var(--button-secondary-fill);
+  box-shadow: 0 0 0 1px oklch(0.3 0.08 238 / 0.2);
 }

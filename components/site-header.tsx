@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { navItems, phoneDisplay, phoneTel } from "@/lib/site"
 
-const HEADER_HEIGHT_CLASS = "h-[4.25rem]"
+const HEADER_HEIGHT_CLASS = "h-(--header-height)"
 
 export function SiteHeader() {
   const panelTitleId = useId()
