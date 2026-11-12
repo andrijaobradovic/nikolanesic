@@ -75,6 +75,8 @@
   --chart-5: oklch(0.476 0.114 61.907);
   --radius: 0.625rem;
   --button-secondary-fill: oklch(0.3 0.08 238);
+  --home-steps-gradient-start: oklch(0.34 0.09 228);
+  --home-steps-gradient-end: oklch(0.12 0.05 268);
   --header-height: 4.25rem;
   --sidebar: oklch(0.986 0.002 67.8);
   --sidebar-foreground: oklch(0.147 0.004 49.3);
@@ -182,8 +184,49 @@
   animation-delay: 140ms;
 }
 
+.steps-rise-delay-2 {
+  animation-delay: 200ms;
+}
+
+.steps-rise-delay-3 {
+  animation-delay: 280ms;
+}
+
+.home-steps-section {
+  background: linear-gradient(
+    to bottom right,
+    var(--home-steps-gradient-start) 0%,
+    var(--home-steps-gradient-end) 100%
+  );
+}
+
+@keyframes step-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.step-card {
+  transition: box-shadow 300ms ease;
+}
+
+.step-card:hover {
+  animation: step-card-float 2.5s ease-in-out infinite;
+  box-shadow:
+    0 12px 28px oklch(0 0 0 / 0.22),
+    0 0 0 1px oklch(0.58 0.13 78 / 0.35);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-rise {
+    animation: none;
+  }
+
+  .step-card:hover {
     animation: none;
   }
 }

@@ -1,13 +1,26 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
+import { HomeFaq } from "@/components/home-faq"
+import { HomeSteps } from "@/components/home-steps"
 import { LoanCalculator } from "@/components/loan-calculator"
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { homeFaqItems } from "@/lib/home-faq"
+
+const homeFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+}
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Stratton Oak Mont | Keš kredit",
+    absolute: "Stratton Oak Mont",
   },
   description:
     "Izaberite iznos i rok keš kredita i odmah vidite mesečnu ratu. Stratton Oak Mont pomaže da dođete do povoljne kamate.",
@@ -50,6 +63,15 @@ export default function Home() {
           <div className="h-px w-full bg-primary" />
         </div>
       </section>
+
+      <HomeSteps />
+
+      <HomeFaq />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
+      />
     </main>
   )
 }

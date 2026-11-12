@@ -5,6 +5,10 @@ import { cn } from "cn"
 const fillHover =
   "relative isolate overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100"
 
+/** Gold fill (after); hover wipes left→right with --button-wipe (default page background). */
+const fillHoverWipe =
+  "relative isolate overflow-hidden bg-transparent after:pointer-events-none after:absolute after:inset-0 after:-z-20 after:bg-primary after:content-[''] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-(--button-wipe,var(--background)) before:transition-transform before:duration-300 before:ease-out before:content-[''] hover:before:scale-x-100"
+
 const buttonVariants = cva(
   `group/button inline-flex shrink-0 items-center justify-center rounded-none border-2 bg-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-[color,box-shadow,transform] outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4`,
   {
@@ -19,8 +23,8 @@ const buttonVariants = cva(
           "border-border text-foreground before:bg-muted hover:text-foreground aria-expanded:before:scale-x-100 aria-expanded:text-foreground dark:border-input"
         ),
         secondary: cn(
-          fillHover,
-          "border-button-secondary-fill text-button-secondary-fill before:bg-button-secondary-fill hover:text-white aria-expanded:before:scale-x-100 aria-expanded:text-white"
+          fillHoverWipe,
+          "border-primary text-white hover:text-primary aria-expanded:before:scale-x-100 aria-expanded:text-primary"
         ),
         ghost:
           "border-transparent hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",

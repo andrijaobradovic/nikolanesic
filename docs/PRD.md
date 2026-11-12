@@ -76,7 +76,7 @@ Redosled je fiksan:
 4. Pitanja
 5. Podnožje
 
-Nema dodatne sekcije, nema reda prednosti, nema bloka „za koga je kredit“, nema utisaka klijenata i nema završnog poziva iznad podnožja.
+Nema dodatne sekcije, nema reda prednosti, nema bloka „za koga je kredit“ i nema utisaka klijenata. Ispod koraka stoji samo dugme **Kontaktirajte nas** koje vodi na kontakt.
 
 ### 6.1 Prvi ekran
 
@@ -97,12 +97,16 @@ Dugme vodi na kontakt i nosi tip kredita, iznos, rok, ratu i valutu.
 
 ### 6.2 Koraci
 
-Četiri koraka, numerisana, sa jednom rečenicom:
+Sekcija ima dijagonalni gradijent pozadine od gore levo (teget) do dole desno (vrlo tamno plava). Naslov je **Kako izgleda proces**, sa podnaslovom o putu od online prijave do filijale. Četiri kartice u jednom redu na velikom ekranu, dve kolone na srednjem, jedna na telefonu. Između kartica na velikom ekranu ide zlatna strelica nadesno; na telefonu i u rasporedu od dve kolone strelice se ne prikazuju.
+
+Svaka kartica ima ikonicu, naslov u zlatnoj boji, jednu rečenicu u prigušenom belom i staklen izgled (providna svetla podloga sa zamućenjem), zlatni okvir, senku i blago lebdenje dok je pokazivač miša na kartici.
 
 1. **Online prijava.** Popunite kalkulator i ostavite podatke kako bismo vas pozvali.
 2. **Razgovor sa agentom.** Agent prolazi iznos, rok i vašu situaciju.
 3. **Odabir ponude.** Agent predlaže ponudu banke koja odgovara tome što ste izabrali.
 4. **Realizacija u filijali.** Sa spremnim koracima odlazite u filijalu banke i podnosite zahtev.
+
+Ispod kartica, centrirano, primarno dugme **Kontaktirajte nas** vodi na kontakt bez podataka iz kalkulatora.
 
 Imena banaka se ne pominju.
 
