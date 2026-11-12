@@ -1,0 +1,24 @@
+---
+description: Check PRD, architecture, and database docs before implementing
+alwaysApply: true
+---
+
+# Project source of truth
+
+Before implementing a feature, read the doc that covers it:
+
+- Product requirements: `docs/PRD.md`
+- Architecture: `docs/Tech.md`
+- Database schema: `docs/DB.md`
+- UI: `.cursor/rules/ui-shadcn.mdc`
+
+Do not invent product requirements that are not in the PRD or SoW. Follow `docs/Tech.md` before introducing a new pattern, `docs/DB.md` before creating or changing tables, and the UI rule before building interface.
+
+```md
+❌ BAD
+Add a favorites feature and a `favorites` table because it seems useful.
+
+✅ GOOD
+`docs/PRD.md` lists the feature. `docs/Tech.md` names the pattern.
+`docs/DB.md` already has the table and columns. UI uses the shadcn rule.
+```

@@ -1,0 +1,43 @@
+---
+description: Use shadcn/ui, the components.json preset, and Tailwind for UI
+globs: "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# UI rules
+
+Build UI with shadcn/ui. Read `components.json` and keep its preset (`style`: `base-nova`, `baseColor`: `taupe`, `iconLibrary`: `lucide`, `rsc`: true). Import UI from `@/components/ui`.
+
+## Before adding a component
+
+1. Reuse `@/components/ui/*` (button, input, card, label, and the rest already in the repo).
+2. If it is missing, use the shadcn MCP to see what exists and pull the latest. Install with the `components.json` preset (`npx shadcn@latest add <component>`), which matches [ui.shadcn.com](https://ui.shadcn.com) structure, composition, and naming.
+3. Do not invent button, input, dialog, select, table, or form primitives when shadcn/ui already provides them.
+
+```tsx
+// ❌ BAD — custom button primitive
+export function Button({ children }: { children: React.ReactNode }) {
+  return <button className="bg-black px-4 py-2 text-white">{children}</button>
+}
+
+// ✅ GOOD — shadcn button and its variants
+import { Button } from "@/components/ui/button"
+
+<Button variant="default" size="lg">Save</Button>
+```
+
+## Styling and forms
+
+- Style with Tailwind. Extend a shadcn `variant` or `size` instead of restyling the primitive with one-off classes.
+- Forms use shadcn form patterns with a visible label and an error message.
+
+```tsx
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+<div className="grid gap-2">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" aria-invalid={!!error} />
+  {error ? <p className="text-sm text-destructive">{error}</p> : null}
+</div>
+```
