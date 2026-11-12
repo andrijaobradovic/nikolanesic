@@ -1,6 +1,9 @@
 import type { Currency, LoanProductCode } from "@/lib/loans"
 
 export const loanSelectionKey = "som-inquiry-loan"
+export const inquirySourceKey = "som-inquiry-source"
+
+export type InquirySource = "pocetna" | "kalkulatori" | "kontakt"
 
 export type LoanSelection = {
   product: LoanProductCode
@@ -26,11 +29,17 @@ function isLoanSelection(value: unknown): value is LoanSelection {
   )
 }
 
-export function saveLoanSelection(selection: LoanSelection) {
+export function saveLoanSelection(
+  selection: LoanSelection,
+  source?: InquirySource,
+) {
   if (typeof window === "undefined") return
 
   try {
     sessionStorage.setItem(loanSelectionKey, JSON.stringify(selection))
+    if (source) {
+      sessionStorage.setItem(inquirySourceKey, source)
+    }
   } catch {
     return
   }

@@ -59,9 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center px-[15%]" aria-hidden>
-          <div className="h-px w-full bg-primary" />
-        </div>
+        
       </section>
 
       <HomeSteps />

@@ -7,7 +7,7 @@ import { useId, useState, type CSSProperties } from "react"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { formatMoney, formatTerm } from "@/lib/format"
-import { saveLoanSelection } from "@/lib/inquiry"
+import { saveLoanSelection, type InquirySource } from "@/lib/inquiry"
 import {
   getLoanProduct,
   quoteLoan,
@@ -18,6 +18,9 @@ import { cn } from "@/lib/utils"
 type LoanCalculatorProps = {
   product: LoanProductCode
   className?: string
+  initialAmount?: number
+  initialTerm?: number
+  inquirySource?: InquirySource
 }
 
 type SliderFieldProps = {
@@ -78,11 +81,19 @@ function SliderField({
   )
 }
 
-export function LoanCalculator({ product, className }: LoanCalculatorProps) {
+export function LoanCalculator({
+  product,
+  className,
+  initialAmount,
+  initialTerm,
+  inquirySource = "pocetna",
+}: LoanCalculatorProps) {
   const loan = getLoanProduct(product)
   const fieldId = useId()
-  const [amount, setAmount] = useState(loan.defaultAmount)
-  const [term, setTerm] = useState(loan.defaultTerm)
+  const [amount, setAmount] = useState(
+    initialAmount ?? loan.defaultAmount,
+  )
+  const [term, setTerm] = useState(initialTerm ?? loan.defaultTerm)
   const quote = quoteLoan(loan, amount, term)
 
   return (
@@ -140,13 +151,16 @@ export function LoanCalculator({ product, className }: LoanCalculatorProps) {
             "h-11 w-full text-base",
           )}
           onClick={() =>
-            saveLoanSelection({
-              product: loan.code,
-              amount,
-              term,
-              installment: quote.installment,
-              currency: loan.currency,
-            })
+            saveLoanSelection(
+              {
+                product: loan.code,
+                amount,
+                term,
+                installment: quote.installment,
+                currency: loan.currency,
+              },
+              inquirySource,
+            )
           }
         >
           Zatraži kredit
